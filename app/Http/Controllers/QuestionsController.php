@@ -32,7 +32,7 @@ class QuestionsController extends Controller
     {
         $question = new Question();
 
-        return view('questions.create',compact('question'));
+        return view('questions.create', compact('question'));
     }
 
     /**
@@ -43,9 +43,9 @@ class QuestionsController extends Controller
      */
     public function store(AskQuestionRequest $request)
     {
-        $request->user()->questions()->create($request->only('title','body'));
+        $request->user()->questions()->create($request->only('title', 'body'));
 
-        return redirect()->route('questions.index')->with('success','Your question has been submitted');
+        return redirect()->route('questions.index')->with('success', 'Your question has been submitted');
     }
 
     /**
@@ -56,7 +56,9 @@ class QuestionsController extends Controller
      */
     public function show(Question $question)
     {
-        //
+        $question->increment('views');
+
+        return view('questions.show',compact('question'));
     }
 
     /**
@@ -67,7 +69,7 @@ class QuestionsController extends Controller
      */
     public function edit(Question $question)
     {
-        return view("questions.edit",compact('question'));
+        return view("questions.edit", compact('question'));
     }
 
     /**
@@ -79,9 +81,9 @@ class QuestionsController extends Controller
      */
     public function update(AskQuestionRequest $request, Question $question)
     {
-        $question->update($request->only('title','body'));
+        $question->update($request->only('title', 'body'));
 
-        return redirect('/questions')->with('success',"Your question has been update");
+        return redirect('/questions')->with('success', "Your question has been update");
     }
 
     /**
