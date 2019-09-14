@@ -60,7 +60,7 @@
                                     <p class="lead">
                                         Asked by
                                         <a href="{{$question->user->url}}">{{$question->user->name}}</a>
-                                        <small class="text-muted">{{$question->created_date}}</small>
+                                        <small class="text-muted">{{$question->created_data}}</small>
                                     </p>
                                     {{\Illuminate\Support\Str::limit($question->body,250)}}
                                 </div>

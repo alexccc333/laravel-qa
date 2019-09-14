@@ -29,7 +29,7 @@ class Question extends Model
 
     public function getCreatedDataAttribute()
     {
-        return $this->created_ad->diffForHumans();
+        return $this->created_at->diffForHumans();
     }
 
     public function getStatusAttribute()
